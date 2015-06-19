@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<head>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+  <script src="/jquery.ui.touch-punch.min.js"></script>
+  <link rel="stylesheet" href="/custom.css">
+  <style>
+  #sortable { list-style-type: none; margin: 0; padding: 0; width: 100%; text-align: center; overflow: auto;}
+  #sortable li { margin: 10px 15px 10px 15px; padding: 0.6em; padding-left: 2.5em; font-size: 2.4em; height: auto; overflow: auto;}
+  #sortable li span { position: absolute; margin-left: -1.8em; }
+  </style>
+<script>
+$.fn.randomize = function(selector){
+    var $elems = selector ? $(this).find(selector) : $(this).children(),
+        $parents = $elems.parent();
+
+    $parents.each(function(){
+        $(this).children(selector).sort(function(){
+            return Math.round(Math.random()) - 0.5;
+        }).detach().appendTo(this);
+    });
+
+    return this;
+};
+
+
+
+$(function() {
+	$("#sortable").sortable();
+	$("#sortable").disableSelection();
+
+  $('ul#sortable').randomize('li');
+
+	$('ul#sortable').sortable({
+           update: function(event, ui) {
+            var sortArray = $("#sortable").sortable("toArray");
+            var eva = sortArray.indexOf("eva");
+            var imp = sortArray.indexOf("imp");
+            var sol = sortArray.indexOf("sol");
+            var pro = sortArray.indexOf("pro");
+            var sit = sortArray.indexOf("sit");
+            console.log(sortArray);
+            console.log(eva, imp, sol, pro, sit);
+              $("#eva").toggleClass("fifth", eva == 4);
+              $("#imp").toggleClass("fourth", imp == 3);
+              $("#sol").toggleClass("third", sol == 2);
+              $("#pro").toggleClass("second", pro == 1);
+              $("#sit").toggleClass("first", sit == 0);
+            if (eva == 4 && imp == 3 && sol == 2 && pro == 1 && sit == 0){
+              $("ul#sortable").sortable("disable");
+              $("h1").replaceWith("<h1>Good job, you have put the statements in the correct order!</h1><br><a href='/chef'>TRY ANOTHER ONE</a>");
+            }     
+        }
+    });
+});
+
+</script>
+</head>
+<body>
+
+<h1>Put these statements in order.
+<br>Remember the <b>"Situation => Problem => Solution => Implications => Evaluation"</b> format.<br>
+(hint: the statements will turn colours when they are in the correct position)</h1>
+
+<ul class="target" id="sortable">
+	<li class="ui-state-default" id="sit"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>I'm a student</li>
+	<li class="ui-state-default" id="pro"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>I have no friends</li>
+	<li class="ui-state-default" id="sol"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>I will spend time playing football with others</li>
+	<li class="ui-state-default" id="imp"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>this will detract from my studying time</li>
+	<li class="ui-state-default" id="eva"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>I already study too much, so I can afford to study less</li>
+</ul>
+
+</body>
+</html>

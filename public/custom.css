@@ -1,0 +1,39 @@
+.first {
+	color: red;
+}
+
+.second {
+	color: orange;
+}
+
+.third {
+	color: green;
+}
+
+.fourth {
+	color: blue;
+}
+
+.fifth {
+	color: purple;
+}
+
+.container {
+    margin: 10px;
+    font-size: 0.6em;
+}
+
+.header {
+    height: 100px;
+    background-color: red;
+    overflow: auto;
+    text-align: center;
+}
+
+.item {
+    font-size: 3.2em;
+}
+
+.text {
+    list-style-type: none;
+}
