@@ -1,0 +1,27 @@
+@import "./global.scss";
+@import "./mixins.scss";
+@import "./variables.scss";
+
+.container {
+    font-weight: bold;
+    font-size: 0.9rem;
+    padding: 1.5em 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include respond-to("small") {
+        font-size: 1.5rem;
+    }
+}
+
+.interaction {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5em;
+}
+
+.loadingOutline {
+    outline: 4px solid blue;
+    border-radius: 2em;
+}

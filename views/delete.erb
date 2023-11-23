@@ -1,9 +1,0 @@
-<p>Are you sure you want to delete:</p>
-<blockquote><p><%=h @texts.sit %></p></blockquote>
-<form action="/delete/<%= @texts.id%>" method="POST">
-	<button type="submit" class="btn btn-primary" name="texts" value="ok">OK</button>
-</form>
-<br>
-<form action="/cancel" method="post">
-	<button type="submit" class="btn btn-danger" name="texts">Cancel</button>
-</form>

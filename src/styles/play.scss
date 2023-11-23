@@ -1,0 +1,51 @@
+@import "./global.scss";
+@import "./variables.scss";
+@import "./mixins";
+
+.buttonRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1em;
+    flex-direction: column;
+
+    @include respond-to("small") {
+        flex-direction: row;
+    }
+
+    button {
+        margin: 0.5em;
+        border-radius: 0.5em;
+        min-height: 2.5em;
+        width: 7em;
+        color: white;
+        background-color: #2d4471;
+        font-size: 1rem;
+    }
+
+    a {
+        text-decoration: none;
+        color: white;
+    }
+
+    .active {
+        box-shadow: 5px 5px 2px 1px rgba(0, 0, 255, 0.2);
+
+        @include respond-to("small") {
+            box-shadow: 8px 8px 2px 1px rgba(0, 0, 255, 0.2);
+        }
+    }
+}
+
+.code-line {
+    width: fit-content;
+    border-radius: 0.5em;
+}
+
+.correct-line {
+    background: #69d869;
+}
+
+.incorrect-line {
+    background: #f08484;
+}
