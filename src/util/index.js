@@ -5,7 +5,6 @@ export const addLineNumbers = (lines) =>
 
 // some good old Fisher-Yates with a very hacky recursion to force no item to go back to its original position
 export const shuffle = (arr) => {
-    let arrCopy = [...arr];
 
     var i = arr.length,
         j,
@@ -23,14 +22,14 @@ export const shuffle = (arr) => {
     // so if any of them do that, we force a re-shuffle until they're all in a different place from
     // the original
     arr.forEach((element, index) => {
-        if (arr[index] === arrCopy[index]) {
+        if (arr[index].lineNumber === index + 1) {
             completelyRandomized = false;
         }
     });
     if (completelyRandomized) {
         return arr;
     } else {
-        return shuffle(arrCopy);
+        return shuffle(arr);
     }
 };
 

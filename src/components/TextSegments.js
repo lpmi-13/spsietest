@@ -25,12 +25,11 @@ const getListStyle = (isDraggingOver) => ({
 });
 
 const TextSegments = ({ lines }) => {
-    console.log({ lines });
     useEffect(() => {
         setLinesOrder(shuffle(lines));
     }, [lines]);
 
-    const [linesOrder, setLinesOrder] = useState(lines);
+    const [linesOrder, setLinesOrder] = useState(shuffle(lines));
 
     const onDragEnd = (result) => {
         // dropped outside the list
